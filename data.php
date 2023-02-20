@@ -96,20 +96,23 @@ $dataSheet = [];
 				$result = $conn->query($cek);
 				if($result->num_rows <= 0)
 				{
-					if($answerType == 'suggestion')
+					if(isset($surveiItemPerQuetsionValue['matrix_row_id']))
 					{
-						$nonya++;
-						$dataSheet[$noK]['items'][$nonya] = $answerValue;
-						$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
-								VALUES ('$surveyId'
-										,'$qtsId'
-										,'$answerType'
-										,'$answerValue'
-										,'$participantId'
-										,'$createdAt')";
-						if ($conn->query($sql) === TRUE) 
+						if($surveiItemPerQuetsionValue['matrix_row_id'] != NULL)
 						{
-							$total++;
+							$nonya++;
+							$dataSheet[$noK]['items'][$nonya] = $answerValue;
+							$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
+									VALUES ('$surveyId'
+											,'$qtsId'
+											,'$answerType'
+											,'$answerValue'
+											,'$participantId'
+											,'$createdAt')";
+							if ($conn->query($sql) === TRUE) 
+							{
+								$total++;
+							}
 						}
 					} 
 				}
