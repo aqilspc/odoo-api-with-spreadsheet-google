@@ -146,13 +146,14 @@ function updateSheet($data,$jml)
 	$cell = $jml+1;
 	foreach ($data as $dataKey => $dataValue) 
 	{
+		$cell++;
 		$updateRow = $dataValue['items'];
 		$rows = [$updateRow];
 		$valueRange = new \Google_Service_Sheets_ValueRange();
 		$valueRange->setValues($rows);
-		$range = 'Data!A'.$cell.''; 
+		$range = 'Data!A'.$cell - 1.''; 
 		$options = ['valueInputOption' => 'USER_ENTERED'];
 		$service->spreadsheets_values->update($spreadsheetId, $range, $valueRange, $options);
-		$cell++;
+		
 	}
 }
