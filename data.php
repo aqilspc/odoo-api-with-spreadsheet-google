@@ -98,7 +98,7 @@ $dataSheet = [];
 				{
 					if(isset($surveiItemPerQuetsionValue['matrix_row_id']))
 					{
-						if($surveiItemPerQuetsionValue['matrix_row_id'] != NULL)
+						if(is_array($surveiItemPerQuetsionValue['matrix_row_id']))
 						{
 							$nonya++;
 							$dataSheet[$noK]['items'][$nonya] = $answerValue;
