@@ -62,7 +62,7 @@ $dataSheet = [];
 		foreach ($arrQts as $arrQtsKey => $arrQtsValue) 
 		{
 			$noK++;
-			$dataSheet[$noK]['item'] = [];
+			$dataSheet[$noK]['items'] = null;
 			// jawaban detail per item {3}
 			$surveiItemPerQuetsion = $models->execute_kw($db, $uid, $password
 			, 'survey.user_input.line'
