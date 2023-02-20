@@ -143,7 +143,7 @@ function updateSheet($data,$jml)
 	$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 	$values = $response->getValues();
 	//update data
-	$cell = $jml+1;
+	$cell = $jml+2;
 	foreach ($data as $dataKey => $dataValue) 
 	{
 		$cell++;
