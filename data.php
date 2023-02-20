@@ -58,7 +58,7 @@ $dataSheet = [];
 		}
 		//echo print_r($arrQts);
 		$noK = -1;
-		$jml = $conn->query("SELECT COUNT(*) AS jml FROM survey_answers")->fetch_array();
+		$jml = $conn->query("SELECT COUNT(*) AS jml FROM survey_answers GROUP BY participant_id")->fetch_array();
 		foreach ($arrQts as $arrQtsKey => $arrQtsValue) 
 		{
 			$noK++;
