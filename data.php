@@ -151,8 +151,7 @@ function updateSheet($data,$jml)
 		$rows = [$updateRow];
 		$valueRange = new \Google_Service_Sheets_ValueRange();
 		$valueRange->setValues($rows);
-		$cl = $cell - 1;
-		$range = 'Data!A'.$cl.''; 
+		$range = 'Data!A'.$cell.''; 
 		$options = ['valueInputOption' => 'USER_ENTERED'];
 		$service->spreadsheets_values->update($spreadsheetId, $range, $valueRange, $options);
 		
