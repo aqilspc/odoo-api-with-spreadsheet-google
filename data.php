@@ -146,17 +146,20 @@ function updateSheet($data,$jml)
 	$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 	$values = $response->getValues();
 	//update data
-	$cell = $jml+1;
+	$cell = $jml+3;
 	foreach ($data as $dataKey => $dataValue) 
 	{
-		$cell++;
-		$updateRow = $dataValue['items'];
-		$rows = [$updateRow];
-		$valueRange = new \Google_Service_Sheets_ValueRange();
-		$valueRange->setValues($rows);
-		$range = 'Data!A'.$cell.''; 
-		$options = ['valueInputOption' => 'USER_ENTERED'];
-		$service->spreadsheets_values->update($spreadsheetId, $range, $valueRange, $options);
+		if(!is_null($dataValue['items']))
+		{
+			$cell++;
+			$updateRow = $dataValue['items'];
+			$rows = [$updateRow];
+			$valueRange = new \Google_Service_Sheets_ValueRange();
+			$valueRange->setValues($rows);
+			$range = 'Data!A'.$cell.''; 
+			$options = ['valueInputOption' => 'USER_ENTERED'];
+			$service->spreadsheets_values->update($spreadsheetId, $range, $valueRange, $options);
+		}
 		
 	}
 }
