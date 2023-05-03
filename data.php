@@ -1,11 +1,19 @@
 <?php
 require_once('ripcord.php');
-$url = 'https://spmiuinmaliki.my.id';
+// $url = 'https://spmiuinmaliki.my.id';
+// $models = ripcord::client("$url/xmlrpc/2/object");
+// $common = ripcord::client("$url/xmlrpc/2/common");
+// $db = 'nabil';
+// $username = 'bilrahmat99@gmail.com';
+// $password = 'nabil';
+// $uid = $common->authenticate($db, $username, $password, array());
+
+$url = 'https://spmi.uin-malang.ac.id/';
 $models = ripcord::client("$url/xmlrpc/2/object");
 $common = ripcord::client("$url/xmlrpc/2/common");
-$db = 'nabil';
-$username = 'bilrahmat99@gmail.com';
-$password = 'nabil';
+$db = 'eSURVEY';
+$username = '19650156@student.uin-malang.ac.id';
+$password = 'konteng99';
 $uid = $common->authenticate($db, $username, $password, array());
 
 // connect db
