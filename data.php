@@ -36,7 +36,7 @@ $surveiItemList = $models->execute_kw($db, $uid, $password
 	, 'search_read', 
 		array(
 			array(
-				array('survey_id','=',5),
+				array('survey_id','=',77),
 				array('state','=','done')
 			)
 		)
@@ -77,7 +77,7 @@ $dataSheet = [];
 			, 'search_read', 
 				array(
 					array(
-						array('survey_id','=',5),
+						array('survey_id','=',77),
 						array('user_input_id','=',$arrQtsKey),
 						array('question_id','=',$arrQtsValue) // from {2} => object array ['predefined_question_ids'] => under looping
 						)
@@ -87,7 +87,7 @@ $dataSheet = [];
 			$nonya = -1;
 			foreach ($surveiItemPerQuetsion as $surveiItemPerQuetsionKey => $surveiItemPerQuetsionValue) 
 			{
-				$surveyId = 5;
+				$surveyId = 77;
 				$answerValue = intval($surveiItemPerQuetsionValue['display_name']);
 				$answerType = $surveiItemPerQuetsionValue['answer_type'];
 				$participantId = $arrQtsKey;
