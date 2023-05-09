@@ -9,10 +9,15 @@ $password = 'konteng99';
 $uid = $common->authenticate($db, $username, $password, array());
 
 // connect db
-$servername = "172.17.0.1";
+// $servername = "172.17.0.1";
+// $usernameDb = "root";
+// $passwordDB = "nabil";
+// $dbname = "bridge_odoo";
+
+$servername = "localhost:3307";
 $usernameDb = "root";
-$passwordDB = "nabil";
-$dbname = "bridge_odoo";
+$passwordDB = "";
+$dbname = "bridge_odoo_new";
 
 // Create connection
 $conn = new mysqli($servername, $usernameDb, $passwordDB, $dbname);
@@ -28,7 +33,7 @@ $surveiItemList = $models->execute_kw($db, $uid, $password
 	, 'search_read', 
 		array(
 			array(
-				array('survey_id','=',77),
+				array('survey_id','=',66),
 				array('state','=','done')
 			)
 		)
@@ -56,7 +61,7 @@ $dataSheet = [];
 					$arrQts[$surveiItemListValue['id']][$surveiItemDetailValueUiLiKey] = $surveiItemDetailValueUiLiValue;
 				}
 		}
-		//echo print_r($arrQts);
+	//echo print_r($arrQts);
 		$noK = -1;
 		$jml = $conn->query("SELECT COUNT(*) AS jml FROM survey_answers GROUP BY participant_id")->fetch_array();
 		foreach ($arrQts as $arrQtsKey => $arrQtsValue) 
@@ -69,7 +74,7 @@ $dataSheet = [];
 			, 'search_read', 
 				array(
 					array(
-						array('survey_id','=',77),
+						array('survey_id','=',66),
 						array('user_input_id','=',$arrQtsKey),
 						array('question_id','=',$arrQtsValue) // from {2} => object array ['predefined_question_ids'] => under looping
 						)
@@ -79,7 +84,7 @@ $dataSheet = [];
 			$nonya = -1;
 			foreach ($surveiItemPerQuetsion as $surveiItemPerQuetsionKey => $surveiItemPerQuetsionValue) 
 			{
-				$surveyId = 77;
+				$surveyId = 66;
 				$answerValue = intval($surveiItemPerQuetsionValue['display_name']);
 				$answerType = $surveiItemPerQuetsionValue['answer_type'];
 				$participantId = $arrQtsKey;
@@ -96,12 +101,14 @@ $dataSheet = [];
 				$result = $conn->query($cek);
 				if($result->num_rows <= 0)
 				{
+
 					if(isset($surveiItemPerQuetsionValue['matrix_row_id']))
 					{
 						if(is_array($surveiItemPerQuetsionValue['matrix_row_id']))
 						{
 							$nonya++;
 							$answerValue = $surveiItemPerQuetsionValue['suggested_answer_id'][1];
+							$answerValue = str_replace("'", ' ', $answerValue);
 							$dataSheet[$noK]['items'][$nonya] = $answerValue;
 							$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
 									VALUES ('$surveyId'
@@ -115,6 +122,44 @@ $dataSheet = [];
 								$total++;
 							}
 						}
+					}
+
+					if(isset($surveiItemPerQuetsionValue['value_char_box']))
+					{
+							$nonya++;
+							$answerValue = $surveiItemPerQuetsionValue['value_char_box'];
+							$answerValue = str_replace("'", ' ', $answerValue);
+							$dataSheet[$noK]['items'][$nonya] = $answerValue;
+							$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
+									VALUES ('$surveyId'
+											,'$qtsId'
+											,'$answerType'
+											,'$answerValue'
+											,'$participantId'
+											,'$createdAt')";
+							if ($conn->query($sql) === TRUE) 
+							{
+								$total++;
+							}
+					}
+
+					if(isset($surveiItemPerQuetsionValue['value_numerical_box']))
+					{
+							$nonya++;
+							$answerValue = $surveiItemPerQuetsionValue['value_numerical_box'];
+							$answerValue = str_replace("'", ' ', $answerValue);
+							$dataSheet[$noK]['items'][$nonya] = $answerValue;
+							$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
+									VALUES ('$surveyId'
+											,'$qtsId'
+											,'$answerType'
+											,'$answerValue'
+											,'$participantId'
+											,'$createdAt')";
+							if ($conn->query($sql) === TRUE) 
+							{
+								$total++;
+							}
 					} 
 				}
 			}
@@ -126,7 +171,7 @@ if($total > 0)
 	updateSheet($dataSheet,$jml['jml']);
 }
 $conn->close();
-echo print_r($dataSheet);
+echo 'done';
 
 function updateSheet($data,$jml)
 {
@@ -140,14 +185,14 @@ function updateSheet($data,$jml)
 	$client->setAuthConfig($path);
 	// configure the Sheets Service
 	$service = new \Google_Service_Sheets($client);
-	$spreadsheetId = '1gACKJKmxh80_kZBscotSDmjwlbWVFOkJxXj6jsjjHwo';
+	$spreadsheetId = '1NpvzLvdkBgJ_hfKa1QDj0NMbisyz3jYuYLbl8kcUlVw';
 	//$spreadsheet = $service->spreadsheets->get($spreadsheetId);
 	//var_dump($spreadsheet);
 	$range = 'data'; // here we use the name of the Sheet to get all the rows
 	$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 	$values = $response->getValues();
 	//update data
-	$cell = $jml+3;
+	$cell = $jml+2;
 	foreach ($data as $dataKey => $dataValue) 
 	{
 		if(!is_null($dataValue['items']))
