@@ -96,35 +96,42 @@ $dataSheet = [];
 					if(isset($surveiItemPerQuetsionValue['question_id'][1]))
 					{
 						$typeQuetsion = $surveiItemPerQuetsionValue['question_id'][1];
-						$typeQuetsion = str_split($typeQuetsion);
-						if(isset($typeQuetsion[0]))
+						//$typeQuetsion = explode(' ', $typeQuetsion);
+						if(isset($typeQuetsion))
 						{
-							if(in_array($typeQuetsion[0], $arrNotScrore))
+							if(in_array($typeQuetsion, $arrNotScrore))
 							{
 								$answerValue = $surveiItemPerQuetsionValue['value_char_box'];
 								$answerValue = str_replace("'", ' ', $answerValue);
 							}else{
 								$answerValue = $surveiItemPerQuetsionValue['answer_score'];
 							}
+							// $qtss = $surveiItemPerQuetsionValue['question_id'][1];
 							$dataSheet[$noK]['items'][$nonya] = $answerValue;
 							$sql = "INSERT INTO survey_answers (survey_id, quetsion_id, type, value, participant_id, created_at)
-											VALUES ('$surveyId'
-													,'$qtsId'
-													,'$answerType'
-													,'$answerValue'
-													,'$participantId'
-													,'$createdAt')";
+									VALUES ('$surveyId'
+											,'$qtsId'
+											,'$answerType'
+											,'$answerValue'
+											,'$participantId'
+											,'$createdAt')";
 							if ($conn->query($sql) === TRUE) 
 							{
 									$total++;
 							}
+
+						
 						}
 					}
 				}
 			}
+				// if($total >= 10)
+				// {
+				// 	break;
+				// }
 		}
 
-echo 'done';
+echo $total;
 
 
 //$jml = $conn->query("SELECT COUNT(*) AS jml FROM survey_answers GROUP BY participant_id")->fetch_array();
