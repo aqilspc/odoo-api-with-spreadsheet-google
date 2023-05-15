@@ -55,7 +55,9 @@ $dataSheet = [];
 		}
 
 		$noK = -1;
-		$arrNotScrore = ['Nama','NIM','Jenis Kelamin','Program Studi','Kode Mata Kuliah','Mata Kuliah','Nama Dosen','Berikan'];
+		$arrNotScrore = ['Nama','NIM','Mata Kuliah','Nama Dosen','Berikan pesan dan saran kepada dosen yang bersangkutan'];
+		$arrJk = ['Jenis Kelamin','Program Studi'];
+		$arrNum = ['Kode Mata Kuliah'];
 		foreach ($arrQts as $arrQtsKey => $arrQtsValue) 
 		{
 			$noK++;
@@ -103,6 +105,16 @@ $dataSheet = [];
 							{
 								$answerValue = $surveiItemPerQuetsionValue['value_char_box'];
 								$answerValue = str_replace("'", ' ', $answerValue);
+							}elseif(in_array($typeQuetsion, $arrJk)){
+								if(isset($surveiItemPerQuetsionValue['suggested_answer_id'][1]))
+								{
+									$answerValue = $surveiItemPerQuetsionValue['suggested_answer_id'][1];
+								}
+								
+								
+							}elseif(in_array($typeQuetsion, $arrNum))
+							{
+								$answerValue = $surveiItemPerQuetsionValue['value_numerical_box'];
 							}else{
 								$answerValue = $surveiItemPerQuetsionValue['answer_score'];
 							}
