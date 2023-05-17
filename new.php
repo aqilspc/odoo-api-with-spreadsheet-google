@@ -11,7 +11,7 @@ $uid = $common->authenticate($db, $username, $password, array());
 
 $servername = "localhost";
 $usernameDb = "root";
-$passwordDB = "";
+$passwordDB = "nabil";
 $dbname = "bridge_odoo_new";
 
 $conn = new mysqli($servername, $usernameDb, $passwordDB, $dbname);
