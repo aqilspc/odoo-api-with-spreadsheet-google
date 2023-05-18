@@ -31,7 +31,7 @@ if($latestParticipantId['jml'] > 0)
 				array(
 					array('survey_id','=',66),
 					array('state','=','done'),
-					array('id','>',78371)
+					array('id','>',$latestParticipantId['jml'])
 				)
 			)
 		); 
