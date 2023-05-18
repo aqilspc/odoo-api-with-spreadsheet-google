@@ -50,7 +50,7 @@ foreach ($arr as $key => $value)
 
 $conn->close();
 
-if($total > 0) //spreedsheet
+if($total > 0 && $jml['jml'] > 24) //spreedsheet
 {
 	$jml = $jml['jml'] / 24;
 	updateSheet($dataSheet,$jml);

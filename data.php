@@ -9,9 +9,9 @@ $password = 'konteng99';
 $uid = $common->authenticate($db, $username, $password, array());
 
 // connect db
-$servername = "localhost";
+$servername = "localhost:3307";
 $usernameDb = "root";
-$passwordDB = "nabil";	
+$passwordDB = "";	
 $dbname = "bridge_odoo";
 
 // Create connection
