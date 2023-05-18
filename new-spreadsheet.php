@@ -63,10 +63,10 @@ function updateSheet($data,$jml)
 	$client->setApplicationName('Google Sheets API');
 	$client->setScopes([\Google_Service_Sheets::SPREADSHEETS]);
 	$client->setAccessType('offline');
-	$path = 'spmi.json'; // credentials.json is the key file we downloaded while setting up our Google Sheets API
+	$path = 'survei-kepuasan-mahasiswa-2023-dcc41a29a18f.json'; // credentials.json is the key file we downloaded while setting up our Google Sheets API
 	$client->setAuthConfig($path);
 	$service = new \Google_Service_Sheets($client);
-	$spreadsheetId = '1NpvzLvdkBgJ_hfKa1QDj0NMbisyz3jYuYLbl8kcUlVw';
+	$spreadsheetId = '1jVLJNDEkgmVS8ibYJ73zdrCV3nB1weJJT7CvMJwe5sU';
 	$range = 'data'; // here we use the name of the Sheet to get all the rows
 	$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 	$values = $response->getValues();
