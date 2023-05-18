@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "survei-kepuasan-mahasiswa-2023",
+  "private_key_id": "dcc41a29a18f424528e2331f72e22c77f6ed2e48",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCTc18/af4BtHg5\nHEng5Do8PAfchsquX24jlxnsOHSAotISY0Seq1E2smW9CCLruqnWDFdb5uhJGSzX\nku6bBA2kwTZSmQ7h4U4XeNePwcfW4o2dBEDWQJAA8yYYVRoj+5qo4EHglzvxLIdL\n63N3bO3cx39GVPaplZoyHB30Ul//J4H52c97DfV1x5ANNeWNiWO0CPxGA7DwzTzP\n9IH5/L/Ym6/AjIQNtBZpUcMUsa9gkzczu99aCEPPFeJM6IYqEmS11JRiqD5apGZg\nZwht1L1gbZy8z2e4WyWWglN28soFRfiM7DHz/KtzNQ9j0e/nx4pETM26UV4LHUBU\n/XcMXtCZAgMBAAECggEAH5g1VM52l7FuoFgkKWzl4JHBYnq8c7wtirE+I/xd1FFv\nH3MHWVNesdBsleJoLygea6fV0TKrW7xp/CA3Ad7OuJqQ9AZpZrOjCssBL4PHeQ8u\n5nHqna4UXSu8ojKcCRFIzL5Ox1vIg481x2oCYhjkZ+4UYsLiXqiYc3vMXFWJTc/7\nWe9g17BNr8GF62G7rZWu8iS/702ckFCodoi6X0IyTCD0CrL2ePzCIH+9DroVSJMx\ncExcPMXJXaibu+f4lTTD49pOVH7FMVmz0L3xJb+taX4URWyULtk007XeD/bUgl6J\nSHEEAqxEvGD6U6Sl770iNLBOFmgLg3wxXnA+BG2KPQKBgQDC2SWoVykJ2dLTOcka\ncjoPEluHqun6hz+TeCsfzUiR15AUT0yzZRyK41DQEjmCZMGh3mSafnSdQtRqLPcF\nX2pYOuMWbTFpUMTZyvnZBSiIimTiNv8FDVJVxF/a41cEoj1vZVoTS76ShAn/kLe1\nyZYSbTvoFrgnhD4dvvNhK6wwLQKBgQDBuh+lV081VuySaALArrKiN5yQXV0Q3dkQ\npQBHyptQGh2/XvuRWLVQBmZ/qzRF7bkEoeynigKyRn1ks01eer0aSrr7GRtOB3ks\n4ICUVN1HW/htFyyMzuUa5Mj2B5zf25jQj+Qu5ZA4it8oQoG43B8oNJOrd7m39/+8\n1lWyBQB5nQKBgFdbD10Hpqh59eEpORYYPBthuZN7ducRF9m/uGXLnUt1f2z7mIGd\nRUynWSXP5eSl04IEuMnjA9k1ixIHEsBf5MelrwXw8oQq5/ZU3+sCOwfsNAqPaYoU\nTOOS5P63id3T9wMoR1f7T3dUpz7i3NothJDCVGdbODjPOyIO6AKal9oJAoGAKQOx\nvXydnWpYzapNouOZmDRz5jCOCosdcKOuSoS/mxbcY27FjgEc6eNhAfiKKZ/pwuxR\nQSs75Oh9lbtMTwtnS9C0g4LOQBfe9LxXHJBXBMuY7eexG+KVqLr1PPlhohdI5CcC\npVce0Im+MzTZZ/zab9WpyeygGi3cK+uo2vaqIhUCgYBxe8HOQ3ZSEv49jWvit4pt\ni+aV3wNJpTEcnrgk5plw2rqE1MJ9++b42ZrXeLOZrsu/lOKrKamqnRY0x5LdanBv\nEjZbJUaAQgh41nVmcCzBFwLB9PZ/U2QabiDZ/RzhPC8e+z5M8BtL6sGKZ+kUM9ZD\nCCzr3kyi7AzbGauw30g38A==\n-----END PRIVATE KEY-----\n",
+  "client_email": "nabil-791@survei-kepuasan-mahasiswa-2023.iam.gserviceaccount.com",
+  "client_id": "105656045645919379392",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/nabil-791%40survei-kepuasan-mahasiswa-2023.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
