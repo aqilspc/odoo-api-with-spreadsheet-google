@@ -55,7 +55,7 @@ if($total > 0) //spreedsheet
 {
 	if($jml < 3)
 	{
-		 $jml = 1;
+		 $jml = 0;
 	}
 	updateSheet($dataSheet,$jml);
 }
