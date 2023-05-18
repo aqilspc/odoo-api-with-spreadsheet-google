@@ -19,7 +19,7 @@ if ($conn->connect_error)
 {
   die("Connection failed: " . $conn->connect_error);
 }
-
+//latest participant
 $latestParticipantId = $conn->query("SELECT MAX(participant_id) AS jml FROM survey_answers")->fetch_array();
 
 if($latestParticipantId['jml'] > 0)
@@ -31,7 +31,7 @@ if($latestParticipantId['jml'] > 0)
 				array(
 					array('survey_id','=',66),
 					array('state','=','done'),
-					array('id','>',$latestParticipantId['jml'])
+					array('id','>',$latestParticipantId['jml']) //lebih besar dari latest participant
 				)
 			)
 		); 
@@ -52,7 +52,7 @@ if($latestParticipantId['jml'] > 0)
 $arrQts = [];
 $total = 0;
 $dataSheet = [];
-
+//inisiasi itemlist / kursi participant
 		foreach ($surveiItemList as $surveiItemListKey => $surveiItemListValue) 
 		{
 
@@ -71,11 +71,11 @@ $dataSheet = [];
 					$arrQts[$surveiItemListValue['id']][$surveiItemDetailValueUiLiKey] = $surveiItemDetailValueUiLiValue;
 				}
 		}
-
-		$noK = -1;
+//item value / jawaban dari participant
+		$noK = -1; 
 		$arrNotScrore = ['Nama','NIM','Mata Kuliah','Nama Dosen','Berikan pesan dan saran kepada dosen yang bersangkutan'];
 		$arrJk = ['Jenis Kelamin','Program Studi'];
-		$arrNum = ['Kode Mata Kuliah'];
+		$  = ['Kode Mata Kuliah'];
 		foreach ($arrQts as $arrQtsKey => $arrQtsValue) 
 		{
 			$noK++;
@@ -93,6 +93,7 @@ $dataSheet = [];
 				);
 			//break;
 			//echo json_encode($surveiItemPerQuetsion);
+			//inisiasi filter value/jawaban participant
 			$dataSheet[$noK]['item'] = [];
 			$nonya = -1;
 			foreach ($surveiItemPerQuetsion as $surveiItemPerQuetsionKey => $surveiItemPerQuetsionValue) 
@@ -110,7 +111,7 @@ $dataSheet = [];
 						AND 
 						participant_id='$participantId'";
 				$result = $conn->query($cek);
-				if($result->num_rows <= 0)
+				if($result->num_rows <= 0) //
 				{
 					$nonya++;
 					if(isset($surveiItemPerQuetsionValue['question_id'][1]))
@@ -157,7 +158,7 @@ $dataSheet = [];
 			}
 		}
 
-
+//melanjutkan proses input spreadshet
 if($total > 0)
 {
 	$total = 0;
@@ -199,7 +200,7 @@ if($total > 0)
 	}
 
 	$conn->close();
-
+//penempatan jawaban dari google spreadsheet
 	$jml = $jml['jml'] / 24;
 	if($total > 0) //spreedsheet
 	{

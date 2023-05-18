@@ -22,7 +22,7 @@ if ($conn->connect_error)
   die("Connection failed: " . $conn->connect_error);
 }
 
-$conn->query("TRUNCATE survey_answers");
+$conn->query("TRUNCATE survey_answers"); //mengosongkan semua data di tabel survey answers
 // list jawban done {1}
 $surveiItemList = $models->execute_kw($db, $uid, $password
 	, 'survey.user_input'
@@ -95,7 +95,7 @@ $dataSheet = [];
 						AND 
 						participant_id='$participantId'";
 				$result = $conn->query($cek);
-				if($result->num_rows <= 0)
+				if($result->num_rows <= 0) //filter type data matrix
 				{
 					if(isset($surveiItemPerQuetsionValue['matrix_row_id']))
 					{
@@ -129,6 +129,7 @@ if($total > 0)
 $conn->close();
 echo print_r($total);
 
+//untuk unpdate sheet (kendaraan buat ke spreadshet)
 function updateSheet($data,$jml)
 {
 	require_once('vendor/autoload.php');
@@ -148,7 +149,7 @@ function updateSheet($data,$jml)
 	$response = $service->spreadsheets_values->get($spreadsheetId, $range);
 	$values = $response->getValues();
 	//update data
-	$cell = $jml+3;
+	$cell = $jml+3; 
 	foreach ($data as $dataKey => $dataValue) 
 	{
 		if(!is_null($dataValue['items']))
