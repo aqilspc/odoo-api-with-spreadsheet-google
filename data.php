@@ -126,7 +126,7 @@ if($total > 0)
 	updateSheet($dataSheet,$jml['jml']);
 }
 $conn->close();
-echo print_r($dataSheet);
+echo print_r($total);
 
 function updateSheet($data,$jml)
 {
