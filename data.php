@@ -9,9 +9,9 @@ $password = 'konteng99';
 $uid = $common->authenticate($db, $username, $password, array());
 
 // connect db
-$servername = "localhost:3307";
+$servername = "localhost";
 $usernameDb = "root";
-$passwordDB = "";	
+$passwordDB = "nabil";	
 $dbname = "bridge_odoo";
 
 // Create connection
@@ -22,6 +22,7 @@ if ($conn->connect_error)
   die("Connection failed: " . $conn->connect_error);
 }
 
+$conn->query("TRUNCATE survey_answers");
 // list jawban done {1}
 $surveiItemList = $models->execute_kw($db, $uid, $password
 	, 'survey.user_input'
